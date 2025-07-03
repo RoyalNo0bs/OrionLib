@@ -499,6 +499,7 @@ function OrionLib:Init()
 	end	
 end	
 
+
 function OrionLib:MakeWindow(WindowConfig)
 	local FirstTab = true
 	local Minimized = false
@@ -778,7 +779,7 @@ function OrionLib:MakeWindow(WindowConfig)
 
 
 	local MobileReopenButton = SetChildren(SetProps(MakeElement("Button"), {
-		Parent = Orion,
+	--	Parent = Orion,
 		Size = UDim2.new(0, 40, 0, 40),
 		Position = UDim2.new(0.5, -20, 0, 20),	
 		BackgroundTransparency = 0,
@@ -2109,12 +2110,31 @@ function OrionLib:MakeWindow(WindowConfig)
 		end
 		return ElementFunction	
 	end	
-
+	
+	function TabFunction:Open(TabConfig)
+		MainWindow.Visible = true
+		UIHidden = false
+	end	
+	
+	function TabFunction:Close(TabConfig)
+		MainWindow.Visible = false
+		UIHidden = true
+		OrionLib:MakeNotification({
+			Name = "Interface Hidden",
+			Content = "Tap the open button to reopen the interface. Or Press Key M To Close Or Open",
+			Time = 5
+		})
+	end	
+	
+	function TabFunction:IsHidden(TabConfig)
+		return UIHidden
+	end	
+	
 	return TabFunction
 end	
 
 function OrionLib:Destroy()
 	if Orion and Orion.Parent then pcall(function() Orion:Destroy() end) end
 end
-
 return OrionLib
+
