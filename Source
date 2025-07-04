@@ -1647,6 +1647,7 @@ function OrionLib:MakeWindow(WindowConfig)
 					if BindBox and BindBox.Value and BindBox.Value.TextBounds.X > 0 then	
 						TweenService:Create(BindBox, TweenInfo.new(0.1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, BindBox.Value.TextBounds.X + 16, 0, 24)}):Play()
 					end
+					BindConfig.Callback(Key)
 				end
 
 				Bind:Set(BindConfig.Default)	
@@ -2119,11 +2120,6 @@ function OrionLib:MakeWindow(WindowConfig)
 	function TabFunction:Close(TabConfig)
 		MainWindow.Visible = false
 		UIHidden = true
-		OrionLib:MakeNotification({
-			Name = "Interface Hidden",
-			Content = "Tap the open button to reopen the interface. Or Press Key M To Close Or Open",
-			Time = 5
-		})
 	end	
 	
 	function TabFunction:IsHidden(TabConfig)
