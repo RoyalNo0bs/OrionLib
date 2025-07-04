@@ -1590,9 +1590,9 @@ function OrionLib:MakeWindow(WindowConfig)
 					if keyName == Bind.Value and not Bind.Binding then
 						if BindConfig.Hold then
 							Holding = true
-							pcall(BindConfig.Callback, Holding)
+							--pcall(BindConfig.Callback, Holding)
 						else
-							pcall(BindConfig.Callback)
+							--pcall(BindConfig.Callback)
 						end
 					elseif Bind.Binding then
 						local CapturedKey
@@ -1617,7 +1617,7 @@ function OrionLib:MakeWindow(WindowConfig)
 					if keyName == Bind.Value then
 						if BindConfig.Hold and Holding then
 							Holding = false
-							pcall(BindConfig.Callback, Holding)
+							--pcall(BindConfig.Callback, Holding)
 						end
 					end
 				end)
@@ -1650,7 +1650,7 @@ function OrionLib:MakeWindow(WindowConfig)
 					BindConfig.Callback(Enum.KeyCode[Key])
 				end
 
-				Bind:Set(BindConfig.Default)	
+				Bind:Set(BindConfig.Default.Name)	
 				if BindConfig.Flag then				
 					OrionLib.Flags[BindConfig.Flag] = Bind
 				end
