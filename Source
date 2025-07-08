@@ -1044,7 +1044,7 @@ function OrionLib:MakeWindow(WindowConfig)
 				Content = Content or "Content"
 
 				local ParagraphFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
-					Size = UDim2.new(1, 5, 0, 30),
+					Size = UDim2.new(1, 0, 0, 35),
 					BackgroundTransparency = 0.7,
 					Parent = ItemParent
 				}), {
