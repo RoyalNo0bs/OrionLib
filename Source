@@ -1985,7 +1985,7 @@ function OrionLib:MakeWindow(WindowConfig)
 						if HueInputConn then pcall(function() HueInputConn:Disconnect() end) end;
 						HueInputConn = AddConnection(RunService.RenderStepped, function()
 							local interactionPos = input.UserInputType == Enum.UserInputType.Touch and input.Position or Vector2.new(Mouse.X, Mouse.Y)
-							local HueY = math.clamp((interactionPos.Y - HueBarDisplay.AbsolutePosition.Y) / HueBarDisplay.AbsoluteSize.Y, 0, 1)
+							local HueY = (math.clamp((interactionPos.Y - HueBarDisplay.AbsolutePosition.Y) / HueBarDisplay.AbsoluteSize.Y, 0, 1) + 0.5) % 1
 							HueSelection.Position = UDim2.new(0.5, 0, HueY, 0)
 							ColorH = HueY	
 							UpdateColorPicker()
