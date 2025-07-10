@@ -1881,7 +1881,7 @@ function OrionLib:MakeWindow(WindowConfig)
 					Visible = false,
 					ZIndex = 2
 				}, {
-					Create("UIGradient", {Rotation = 270, Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)),ColorSequenceKeypoint.new(0.16,Color3.fromRGB(255,255,0)), ColorSequenceKeypoint.new(0.33, Color3.fromRGB(0, 255, 0)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(0, 255, 255)), ColorSequenceKeypoint.new(0.66, Color3.fromRGB(0, 0, 255)), ColorSequenceKeypoint.new(0.83, Color3.fromRGB(255, 0, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 0, 4))},}),
+					Create("UIGradient", {Rotation = -270, Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)),ColorSequenceKeypoint.new(0.16,Color3.fromRGB(255,255,0)), ColorSequenceKeypoint.new(0.33, Color3.fromRGB(0, 255, 0)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(0, 255, 255)), ColorSequenceKeypoint.new(0.66, Color3.fromRGB(0, 0, 255)), ColorSequenceKeypoint.new(0.83, Color3.fromRGB(255, 0, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 0, 4))},}),
 					Create("UICorner", {CornerRadius = UDim.new(0, 5)}),
 					HueSelection
 				})
@@ -1985,7 +1985,7 @@ function OrionLib:MakeWindow(WindowConfig)
 						if HueInputConn then pcall(function() HueInputConn:Disconnect() end) end;
 						HueInputConn = AddConnection(RunService.RenderStepped, function()
 							local interactionPos = input.UserInputType == Enum.UserInputType.Touch and input.Position or Vector2.new(Mouse.X, Mouse.Y)
-							local HueY = (math.clamp((interactionPos.Y - HueBarDisplay.AbsolutePosition.Y) / HueBarDisplay.AbsoluteSize.Y, 0, 1) + 0.5) % 1
+							local HueY = math.clamp((interactionPos.Y - HueBarDisplay.AbsolutePosition.Y) / HueBarDisplay.AbsoluteSize.Y, 0, 1)
 							HueSelection.Position = UDim2.new(0.5, 0, HueY, 0)
 							ColorH = HueY	
 							UpdateColorPicker()
